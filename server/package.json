@@ -1,0 +1,36 @@
+{
+  "name": "mim-flip-backend",
+  "version": "1.0.0",
+  "description": "Express app to fetch APIs",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "dev": "nodemon server.js",
+    "start": "node server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "connect-timeout": "^1.9.0",
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "eslint-plugin-import": "^2.24.2",
+    "ethereum-block-by-date": "^1.4.2",
+    "express": "^4.17.2",
+    "express-api-cache": "^1.0.4",
+    "moment": "^2.29.1",
+    "mongoose": "^6.2.1",
+    "node-fetch": "^3.0.0",
+    "nodemon": "^2.0.15",
+    "redis": "^4.0.0-rc.2",
+    "twilio": "^3.73.1",
+    "web3": "^1.5.3"
+  },
+  "devDependencies": {
+    "eslint": "^7.32.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "prettier": "^2.4.1"
+  }
+}
