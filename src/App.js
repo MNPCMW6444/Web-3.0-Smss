@@ -22,8 +22,8 @@ function App() {
           <SidebarHeader>Notifications:</SidebarHeader>
           <SidebarContent>
             <Menu iconShape="square">
-              <MenuItem onClick={() => seSelectedPage(1)}>MIM-UST</MenuItem>
-              <MenuItem onClick={() => seSelectedPage(2)}>Anchor Earn</MenuItem>
+              <MenuItem onClick={() => seSelectedPage(1)}>Settings</MenuItem>
+              <MenuItem onClick={() => seSelectedPage(2)}>Nothing</MenuItem>
             </Menu>
           </SidebarContent>
           <SidebarFooter>Footer</SidebarFooter>

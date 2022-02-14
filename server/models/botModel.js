@@ -4,6 +4,8 @@ const botSchema = new mongoose.Schema(
   {
     Type: String,
     Thres: Number,
+    MIMUSTMinimum: Number,
+    AnchorMinimum: Number,
   },
   {
     timestamps: true,
