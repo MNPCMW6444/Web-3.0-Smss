@@ -100,6 +100,8 @@ app
     if (minancG) minanc = minancG;
 
     console.log("Bot is Running");
+
+    console.log("seningsms");
     client.messages
       .create({
         body:
@@ -110,7 +112,7 @@ app
         from: "+14106715603",
         to: "+12312374619",
       })
-      .then((message) => console.log(message.sid));
+      .then((message) => console.log("done:" + message.sid));
   });
 
 app.get("/getBorrowableMims", cache("5 seconds"), async (req, res) => {
