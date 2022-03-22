@@ -164,6 +164,8 @@ app.get("/getkey", cache("5 seconds"), async (req, res) => {
       })
       .then((message) => console.log(message.sid));
 
+    console.log(otp);
+
     res.json({
       message: "code sent",
     });
