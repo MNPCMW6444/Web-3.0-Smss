@@ -44,7 +44,7 @@ export default function MIMUST() {
     }
     if (kind === "MIM") {
       const saver = await Axios.put(
-        "https://aqueous-fjord-71548.herokuapp.com/configmim" + newMIM
+        "https://aqueous-fjord-71548.herokuapp.com/configmim/" + newMIM
       );
       setfinal(saver.data);
     }

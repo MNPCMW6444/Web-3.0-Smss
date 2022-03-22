@@ -192,7 +192,7 @@ app.get("/gettime", cache("5 seconds"), async (req, res) => {
   });
 });
 
-app.put("/configanc+/anc", async (req, res) => {
+app.put("/configanc/:anc", async (req, res) => {
   const anc = req.params.anc;
 
   if (anc) {
@@ -212,8 +212,8 @@ app.put("/configanc+/anc", async (req, res) => {
   });
 });
 
-app.put("/configmim", async (req, res) => {
-  const mim = req.params.anc;
+app.put("/configmim/:mim", async (req, res) => {
+  const mim = req.params.mim;
 
   if (mim) {
     minmimust = mim;
