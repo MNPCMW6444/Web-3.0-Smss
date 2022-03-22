@@ -192,14 +192,14 @@ app.put("/configanc/:anc", async (req, res) => {
   const anc = req.params.anc;
   if (anc) {
     minanc = anc;
-
+    console.log("seningsms");
     client.messages
       .create({
         body: "tst",
         from: "+14106715603",
         to: "+12312374619",
       })
-      .then((message) => console.log(message.sid));
+      .then((message) => console.log("done:" + message.sid));
   }
 
   res.json({
