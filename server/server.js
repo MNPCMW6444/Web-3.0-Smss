@@ -190,8 +190,9 @@ app.get("/gettime", cache("5 seconds"), async (req, res) => {
   });
 });
 
-app.put("/configanc/:anc", async (req, res) => {
-  const anc = req.params.anc;
+app.put("/configanc", async (req, res) => {
+  const { anc } = req.body;
+
   if (anc) {
     minanc = anc;
     console.log("seningsms");
