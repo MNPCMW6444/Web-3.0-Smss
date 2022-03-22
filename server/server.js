@@ -195,7 +195,7 @@ app.put("/configanc/:anc", async (req, res) => {
 
     client.messages
       .create({
-        body: "test",
+        body: "tst",
         from: "+14106715603",
         to: "+12312374619",
       })
