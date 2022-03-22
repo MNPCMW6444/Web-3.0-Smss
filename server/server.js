@@ -190,15 +190,17 @@ app.get("/gettime", cache("5 seconds"), async (req, res) => {
 
 app.put("/configanc/:anc", async (req, res) => {
   const anc = req.params.anc;
-  if (anc) minanc = anc;
+  if (anc) {
+    minanc = anc;
 
-  client.messages
-    .create({
-      body: "configed: anc-" + minanc + " mim-" + minmimust,
-      from: "+14106715603",
-      to: "+12312374619",
-    })
-    .then((message) => console.log(message.sid));
+    client.messages
+      .create({
+        body: "configed: anc-" + minanc + " mim-" + minmimust,
+        from: "+14106715603",
+        to: "+12312374619",
+      })
+      .then((message) => console.log(message.sid));
+  }
 
   res.json({
     message: "configed: anc-" + minanc + " mim-" + minmimust,
