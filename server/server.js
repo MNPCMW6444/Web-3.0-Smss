@@ -195,7 +195,7 @@ app.put("/configanc/:anc", async (req, res) => {
 
     client.messages
       .create({
-        body: "configed: anc-" + minanc + " mim-" + minmimust,
+        body: "test",
         from: "+14106715603",
         to: "+12312374619",
       })
