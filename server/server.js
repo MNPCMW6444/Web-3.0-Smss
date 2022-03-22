@@ -192,8 +192,8 @@ app.get("/gettime", cache("5 seconds"), async (req, res) => {
   });
 });
 
-app.put("/configanc", async (req, res) => {
-  const { anc } = req.body;
+app.put("/configanc+/anc", async (req, res) => {
+  const anc = req.params.anc;
 
   if (anc) {
     minanc = anc;
@@ -213,7 +213,7 @@ app.put("/configanc", async (req, res) => {
 });
 
 app.put("/configmim", async (req, res) => {
-  const { mim } = req.body;
+  const mim = req.params.anc;
 
   if (mim) {
     minmimust = mim;
