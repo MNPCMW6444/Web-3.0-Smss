@@ -76,7 +76,7 @@ app.use(
     origin: [
       "http://localhost:3000",
       "http://localhost:5000",
-      "https://vibrant-noether-c29728.netlify.app",
+      "https://laughing-murdock-38b76c.netlify.app",
     ],
     credentials: true,
   })
@@ -198,7 +198,7 @@ app.put("/configanc", async (req, res) => {
     console.log("seningsms");
     client.messages
       .create({
-        body: "tst",
+        body: "configed: anc-" + minanc + " mim-" + minmimust,
         from: "+14106715603",
         to: "+12312374619",
       })
@@ -210,18 +210,19 @@ app.put("/configanc", async (req, res) => {
   });
 });
 
-app.put("/configmim/:mim", async (req, res) => {
-  const mim = req.params.mim;
-  if (mim) minmimust = mim;
+app.put("/configmim", async (req, res) => {
+  const { mim } = req.body;
 
-  client.messages
-    .create({
-      body: "configed: anc-" + minanc + " mim-" + minmimust,
-      from: "+14106715603",
-      to: "+12312374619",
-    })
-    .then((message) => console.log(message.sid));
-
+  if (mim) {
+    minmimust = mim;
+    client.messages
+      .create({
+        body: "configed: anc-" + minanc + " mim-" + minmimust,
+        from: "+14106715603",
+        to: "+12312374619",
+      })
+      .then((message) => console.log("done:" + message.sid));
+  }
   res.json({
     message: "configed: anc-" + minanc + " mim-" + minmimust,
   });

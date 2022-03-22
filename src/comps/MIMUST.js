@@ -38,13 +38,15 @@ export default function MIMUST() {
   async function save(kind) {
     if (kind === "ANC") {
       const saver = await Axios.put(
-        "https://aqueous-fjord-71548.herokuapp.com/configanc/" + newANC
+        "https://aqueous-fjord-71548.herokuapp.com/configanc",
+        newANC
       );
       setfinal(saver.data);
     }
     if (kind === "MIM") {
       const saver = await Axios.put(
-        "https://aqueous-fjord-71548.herokuapp.com/configmim/" + newMIM
+        "https://aqueous-fjord-71548.herokuapp.com/configmim",
+        newMIM
       );
       setfinal(saver.data);
     }
