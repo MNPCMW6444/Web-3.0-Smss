@@ -63,9 +63,9 @@ let minmimustG;
 let minancG;
 const app = express();
 const cache = CacheService.cache;
-let minmimust = 500000;
+let minmimust = 20000;
 
-let minanc = 5500000000;
+let minanc = 11000000000;
 
 const accountSid = "ACb56542d282e469142290abbc1c21b238";
 const authToken = "5e093feacc8d6afbc6471b70a641fa3d";
@@ -100,7 +100,7 @@ app
     if (minancG) minanc = minancG;
 
     console.log("Bot is Running");
-     client.messages
+    client.messages
       .create({
         body:
           "Bot is running! will check available MIM and ANC Depsit every 30 sconds and will notify if MIM>" +
@@ -192,6 +192,14 @@ app.put("/configanc/:anc", async (req, res) => {
   const anc = req.params.anc;
   if (anc) minanc = anc;
 
+  client.messages
+    .create({
+      body: "configed: anc-" + minanc + " mim-" + minmimust,
+      from: "+14106715603",
+      to: "+12312374619",
+    })
+    .then((message) => console.log(message.sid));
+
   res.json({
     message: "configed: anc-" + minanc + " mim-" + minmimust,
   });
@@ -200,6 +208,14 @@ app.put("/configanc/:anc", async (req, res) => {
 app.put("/configmim/:mim", async (req, res) => {
   const mim = req.params.mim;
   if (mim) minmimust = mim;
+
+  client.messages
+    .create({
+      body: "configed: anc-" + minanc + " mim-" + minmimust,
+      from: "+14106715603",
+      to: "+12312374619",
+    })
+    .then((message) => console.log(message.sid));
 
   res.json({
     message: "configed: anc-" + minanc + " mim-" + minmimust,
