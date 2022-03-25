@@ -74,6 +74,8 @@ const getBorrowableMimsEthereum = async () => {
 };
 let minmimustG;
 let minancG;
+let lastedge = 15000000;
+
 const app = express();
 const cache = CacheService.cache;
 let minmimust = 20000;
@@ -290,4 +292,33 @@ app.get("/anchor/:value", cache("5 seconds"), async (req, res) => {
   res.json({
     message: deposited < minanc ? "SMS has been sent" : "SMS has NOT been sent",
   });
+});
+
+app.get("/edge/:value", cache("5 seconds"), async (req, res) => {
+  let value = req.params.value;
+  //console.log("value is "+value);
+  let deposited = parseInt(value.split(",").join(""));
+  //console.log("deposited is "+deposited
+  //console.log("deposited is "+deposited);
+  if (deposited > lastedge)
+    //{console.log(3);}
+
+    client.messages
+      .create({
+        body: "edge is now more than 15M, it is:" + deposited,
+        from: "+14106715603",
+        to: "+12312374619",
+      })
+      .then((message) => console.log(message.sid));
+  console.log(
+    "Edge limit is " +
+      deposited +
+      " so " +
+      (deposited > lastedge ? "SMS has been sent" : "SMS has NOT been sent")
+  );
+  res.json({
+    message:
+      deposited > lastedge ? "SMS has been sent" : "SMS has NOT been sent",
+  });
+  lastedge = deposited;
 });
