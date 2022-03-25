@@ -4,8 +4,21 @@ const Web3 = require("web3");
 const Twilio = require("twilio");
 const Bot = require("./models/botModel");
 const DegenBoxABI = require("./DegenBoxABI.json");
+const mongoose = require("mongoose");
 
 const cors = require("cors");
+
+mongoose.connect(
+  "mongodb+srv://mnpcmw:pQ1elm16zZqsFxyI@cluster0.113gz.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  },
+  (err) => {
+    if (err) return console.error(err);
+    console.log("Connected to MongoDB");
+  }
+);
 
 let exp = new Date("2021-02-13T22:01:10.652Z");
 console.log(exp);
@@ -90,14 +103,23 @@ app
   })
   .listen(app.get("port"), async function () {
     try {
-      minmimustG = await Bot.find()[0].MIMUSTMinimum;
-    } catch (e) {}
+      await new Promise((r) => setTimeout(r, 15000));
+      minmimustG = (await Bot.findOne()).MIMUSTMinimum;
+    } catch (e) {
+      console.log(e);
+    }
     if (minmimustG) minmimust = minmimustG;
+    /* console.log("minmimustG is " + minmimustG);
+    console.log("minmimust is " + minmimust); */
 
     try {
-      minancG = await Bot.find()[0].AnchorMinimum;
-    } catch (e) {}
+      minancG = (await Bot.findOne()).AnchorMinimum;
+    } catch (e) {
+      console.log(e);
+    }
     if (minancG) minanc = minancG;
+    /*  console.log("minancG is " + minancG);
+    console.log("minanc is " + minanc); */
 
     console.log("Bot is Running");
 
@@ -197,7 +219,10 @@ app.put("/configanc/:anc", async (req, res) => {
 
   if (anc) {
     minanc = anc;
-    console.log("seningsms");
+    const bot = await Bot.findOne();
+    bot.AnchorMinimum = minanc;
+    await bot.save();
+    bot.console.log("seningsms");
     client.messages
       .create({
         body: "configed: anc-" + minanc + " mim-" + minmimust,
@@ -217,6 +242,9 @@ app.put("/configmim/:mim", async (req, res) => {
 
   if (mim) {
     minmimust = mim;
+    const bot = await Bot.findOne();
+    bot.MIMUSTMinimum = minmimust;
+    await bot.save();
     client.messages
       .create({
         body: "configed: anc-" + minanc + " mim-" + minmimust,
