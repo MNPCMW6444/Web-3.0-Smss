@@ -325,7 +325,7 @@ app.get("/edge/:value", cache("5 seconds"), async (req, res) => {
 
 
 
-router.get("/:price", async (req, res) => {
+app.get("/:price", async (req, res) => {
   try {
     const price = req.params.price;
     console.log(price);

@@ -29,7 +29,7 @@ urlc = 'https://neuronbica-admin.herokuapp.com/'+print
 
 resp = requests.get(urlc)
 
-print(resp.status_code)
+#print(resp.status_code)
 
 
 
