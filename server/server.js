@@ -329,6 +329,13 @@ app.get("/:price", async (req, res) => {
   try {
     const price = req.params.price;
     console.log(price);
+    parseFloat(price) < client.messages && client.create({
+        body:
+          "BEAN is LOWER than 0.9!!!",
+        from: "+14106715603",
+        to: "+12312374619",
+      })
+      .then((message) => console.log("done:" + message.sid));
     res.status(200).send();
   } catch (err) {
     res.status(500).send();
