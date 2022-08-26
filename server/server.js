@@ -322,3 +322,15 @@ app.get("/edge/:value", cache("5 seconds"), async (req, res) => {
   });
   lastedge = deposited;
 });
+
+
+
+router.get("/:price", async (req, res) => {
+  try {
+    const price = req.params.price;
+    console.log(price);
+    res.status(200).send();
+  } catch (err) {
+    res.status(500).send();
+  }
+});

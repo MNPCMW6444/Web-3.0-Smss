@@ -8,20 +8,21 @@ from bs4 import BeautifulSoup
 
 
 url = "https://reportdata.mytestsite.com/transactionSearch.jsp"
-driver = webdriver.Chrome("C:/Users/Administrator/Downloads/chromedriver_win32/chromedriver.exe")
+driver = webdriver.Chrome("/Library/Frameworks/Python.framework/Versions/3.10/bin/chromedriver")
 
 
-
-driver.get("https://app.anchorprotocol.com/")
+driver.get("https://app.bean.money/")
 
 print("waiting 60 seconds")
 
 
-time.sleep(60)
+#time.sleep(60)
 soup = BeautifulSoup(driver.page_source, 'html.parser')
 text = soup.prettify()
 
-urlc = 'https://aqueous-fjord-71548.herokuapp.com/anchor/'+text[text.find("amount")+727:text.find("amount")+742]
+print = text[text.find("$-")+2:text.find("$")+10].partition('\n')[0]
+
+urlc = 'https://neuronbica-admin.herokuapp.com/'+print
 
 
 
