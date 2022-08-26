@@ -344,21 +344,23 @@ app.get("/:price", async (req, res) => {
   try {
     const price = req.params.price;
     console.log(price);
-    parseFloat(price) < client.messages &&
-      client //BENJI!
+    console.log(parseFloat(price));
+    console.log(parseFloat(price) < 1.1);
+    if(parseFloat(price) < 1.1) 
+      client .messages
         .create({
-          //BENJI!
-          body: "BEAN is LOWER than 0.9!!!",
+          body: "BEAN is LOWER than 1.1!!! - it is " + price,
           from: "+14106715603",
           to: "+12312374619",
         })
-        .then((message) => console.log("done:" + message.sid));
+        .catch((e)=>console.log(e));
+      
     res.status(200).send();
   } catch (err) {
-    res.status(500).send();
+    console.log(err);
+    res.status(500).json(err);
   }
 });
-
 const accountSid = "ACb56542d282e469142290abbc1c21b238"; //BENJI!
 const authToken = "5e093feacc8d6afbc6471b70a641fa3d"; //BENJI!
 const client = new Twilio(accountSid, authToken); //BENJI!
