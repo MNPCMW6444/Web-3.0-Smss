@@ -13,10 +13,10 @@ driver = webdriver.Chrome("/Library/Frameworks/Python.framework/Versions/3.10/bi
 
 driver.get("https://app.bean.money/")
 
-print("waiting 60 seconds")
+print("waiting 50 seconds")
 
 
-#time.sleep(60)
+time.sleep(50)
 soup = BeautifulSoup(driver.page_source, 'html.parser')
 text = soup.prettify()
 
