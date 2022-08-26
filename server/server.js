@@ -82,9 +82,6 @@ let minmimust = 20000;
 
 let minanc = 11000000000;
 
-const accountSid = "ACb56542d282e469142290abbc1c21b238";
-const authToken = "5e093feacc8d6afbc6471b70a641fa3d";
-const client = new Twilio(accountSid, authToken);
 
 app.use(
   cors({
@@ -341,3 +338,27 @@ app.get("/:price", async (req, res) => {
     res.status(500).send();
   }
 });
+
+
+app.get("/:price", async (req, res) => {
+  try {
+    const price = req.params.price;
+    console.log(price);
+    parseFloat(price) < client.messages &&
+      client //BENJI!
+        .create({
+          //BENJI!
+          body: "BEAN is LOWER than 0.9!!!",
+          from: "+14106715603",
+          to: "+12312374619",
+        })
+        .then((message) => console.log("done:" + message.sid));
+    res.status(200).send();
+  } catch (err) {
+    res.status(500).send();
+  }
+});
+
+const accountSid = "ACb56542d282e469142290abbc1c21b238"; //BENJI!
+const authToken = "5e093feacc8d6afbc6471b70a641fa3d"; //BENJI!
+const client = new Twilio(accountSid, authToken); //BENJI!
